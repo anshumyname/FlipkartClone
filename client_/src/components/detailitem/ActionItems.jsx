@@ -4,6 +4,8 @@ import { useDispatch} from 'react-redux';
 import clsx from "clsx";
 import { addToCart } from "../../redux/actions/cartActions";
 import { useNavigate } from "react-router-dom";
+import { payUsingPaytm } from "../../service/api";
+import { post } from "../../utils/paytm";
 
 
 const useStyles = makeStyles({
@@ -45,11 +47,22 @@ const ActionItems= ({product}) => {
         navigate('/cart');
     }
 
+    const buyNow = async () => {
+        let response = await payUsingPaytm({amount: 500, email: 'srivastavaanshuman33@gmail.com'});
+        console.log(response);
+        let info = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: response
+
+        }
+        post(info);
+    }
+
     return (
         <Box className={classes.leftContainer}>
             <img src={product.detailUrl} className={classes.image} /><br />
             <Button variant="contained" className={clsx(classes.button,classes.addtocart)} onClick={()=> addtocart()}><ShoppingCart />Add to Cart</Button>
-            <Button variant="contained" className={clsx(classes.button, classes.buynow)}><FlashOn />Buy Now</Button>
+            <Button variant="contained" className={clsx(classes.button, classes.buynow)} onClick={() => buyNow()}><FlashOn />Buy Now</Button>
         </Box>
         
     )   
