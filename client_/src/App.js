@@ -14,11 +14,11 @@ function App() {
     <TemplateProvider >
       <ContextProvider>
         <BrowserRouter className="App">
-          <Header />
+            <Header />
           <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path='/product/:id' element={<DetailView />} />
+            <Route exact path='/' element={<Home />} />
+            <Route exact path="/cart" element={<Cart />} />
+            <Route exact path="/product/:id" element={<DetailView />} />
           </Routes>
         </BrowserRouter>
       </ContextProvider>
