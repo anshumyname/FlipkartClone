@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 const useStyles = makeStyles({
     component: {
-        width: '30%',
+        // width: '30%',
+        padding: '10px',
         background: '#fff',
         marginLeft: 15,
     },

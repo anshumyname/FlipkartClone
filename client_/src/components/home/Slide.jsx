@@ -71,7 +71,7 @@ const Slide = ({ timer, title , products}) => {
     const renderer = ({ hours, minutes, seconds }) => {
         return <span>{hours}:{minutes}:{seconds} left</span>
     }
-
+    
     return (
         <Box>
             <Box className={classes.deal}>
@@ -97,12 +97,12 @@ const Slide = ({ timer, title , products}) => {
                 autoPlaySpeed={10000}
                 keyBoardControl={true}
                 showDots={false}
-                removeArrowOnDeviceType={['tablet', 'mobile']}
                 dotListClass="custom-dot-list-style"
                 itemClass="carousel-item-padding-40-px"
             >
                 {
                     products.map(product => (
+                        
                         <Link to={`product/${product.id}`}>
                         <Box textAlign="center" className={classes.wrapper}>
                             <img className={classes.image} src={product.url} />

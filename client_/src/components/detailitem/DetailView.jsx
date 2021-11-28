@@ -4,19 +4,23 @@ import { useDispatch, useSelector } from "react-redux";
 import { getProductDetails } from "../../redux/actions/productActions";
 import { LocalOffer as Badge } from "@material-ui/icons";
 import { useParams } from "react-router";
-import { Box, makeStyles, TableBody, TableCell,Table, TableRow, Typography } from "@material-ui/core";
+import { Box, makeStyles, TableBody, TableCell,Table, TableRow, Typography , Grid} from "@material-ui/core";
 import ActionItems from "./ActionItems";
 
 import clsx from 'clsx';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     component: {
         background: '#F2F2F2',
     },
     container: {
-        margin: '0 80px',
+        // margin: '0 80px',
         background: '#fff',
-        display: 'flex'
+        display: 'flex',
+        [theme.breakpoints.down('md')]:{
+            margin: 1,
+            padding: '15px'
+        }
     },
     rightcontainer: {
         marginTop: '50px',
@@ -49,7 +53,7 @@ const useStyles = makeStyles({
 
     }
 
-})
+}));
 
 
 
@@ -72,11 +76,11 @@ const DetailView = () => {
             {
                 product &&
 
-                <Box className={classes.container}>
-                    <Box style={{ minWidth: '40%' }}>
+                <Grid container className={classes.container}>
+                    <Grid item lg={4} md={4} sm={8} xs={12}>
                         <ActionItems product={product}/>
-                    </Box>
-                    <Box className={classes.rightcontainer}>
+                    </Grid>
+                    <Grid item lg={8} md={8} sm={8} xs={12} className={classes.rightcontainer}>
                         <Typography>
                             {product.title.longTitle}
                         </Typography>
@@ -93,10 +97,10 @@ const DetailView = () => {
                             Available Offers
                         </Typography>
                         <Box className={classes.smallText}>
-                            <Typography><Badge className={classes.badge}/>Offer 1 </Typography>
-                            <Typography><Badge className={classes.badge}/>Offer 2 </Typography>
-                            <Typography><Badge className={classes.badge}/>Offer 3 </Typography>
-                            <Typography><Badge className={classes.badge}/>Offer 4 </Typography>
+                            <Typography><Badge className={classes.badge}/>Bank Offer10% Instant Discount on RBL Bank Credit and Debit Cards T&C</Typography>
+                            <Typography><Badge className={classes.badge}/>Bank Offer5% Unlimited Cashback on Flipkart Axis Bank Credit Card T&C</Typography>
+                            <Typography><Badge className={classes.badge}/>Bank Offer20% off on 1st txn with Amex Network Cards issued by ICICI Bank,IndusInd Bank,SBI Cards and Mobikwik T&C</Typography>
+                            <Typography><Badge className={classes.badge}/>Bank Offer15% Instant discount on first Pay Later order of ₹500 and above T&C</Typography>
                         </Box>
 
                         <Table>
@@ -129,9 +133,9 @@ const DetailView = () => {
                                 </TableRow>
                             </TableBody>
                         </Table>
-                    </Box>
+                    </Grid>
 
-                </Box>
+                </Grid>
 
             }
         </Box>

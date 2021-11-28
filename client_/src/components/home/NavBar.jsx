@@ -3,11 +3,15 @@ import { CallMissedSharp } from "@material-ui/icons";
 import { makeStyles } from "@material-ui/styles";
 import { navData } from "../../constants/data";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     component: {
         display: 'flex',
         margin: '25px 130px',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        overflowX: 'overlay',
+        [theme.breakpoints.down('md')]: {
+            margin: 0
+        }
     },
     container: {
         textAlign: 'center',
@@ -25,7 +29,7 @@ const useStyles = makeStyles({
         fontWeight: 600
     }
 
-})
+}))
 
 const NavBar = () => {
     const classes = useStyles();

@@ -10,32 +10,49 @@ import { useSelector } from "react-redux";
 
 
 
-const useStyles = makeStyles({
-    login: {
-         background: '#ffffff',
-         color: '#2874f0',
-         textTransform: 'none',
-         fontWeight: 600,
-         borderRadius: 2,
-         padding: '5px 40px',
-         boxShadow: 'none'
-    },
-    wrapper: {
-        margin: '0 7% 0 auto',
+const useStyles = makeStyles(theme => ({
+    container: {
         display: 'flex',
-        '& > *': {
-            marginRight: '50px',
-            fontSize: 12,
-            alignItems: 'center',
-            textDecoration: 'none',
-            color: '#fff'
+        [theme.breakpoints.down('sm')]: {
+            display: 'block'
         }
     },
-    container: {
-        display: 'flex'
+    wrapper: {
+        margin: '0 5% 0 auto', 
+        display: 'flex',    
+        '& > *': {
+            marginRight: 50,
+            textDecoration: 'none',
+            color: '#FFFFFF',
+            fontSize: 12,
+            alignItems: 'center',
+            [theme.breakpoints.down('sm')]: {
+                color: '#2874f0',
+                alignItems: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                marginTop: 10
+            }      
+        },
+        [theme.breakpoints.down('sm')]: {
+            display: 'block'
+        }   
+    },
+    login: {
+        color: '#2874f0',
+        background: '#FFFFFF',
+        textTransform: 'none',
+        fontWeight: 600,
+        borderRadius: 2,
+        padding: '5px 40px',
+        height: 32,
+        boxShadow: 'none',
+        [theme.breakpoints.down('sm')]: {
+            background: '#2874f0',
+            color: '#FFFFFF'
+        }   
     }
-})
-
+}));
 
 const HeaderButtons = () => {
     const classes = useStyles();

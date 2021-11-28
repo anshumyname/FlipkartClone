@@ -1,19 +1,28 @@
 import { useEffect } from 'react';
-import  {useDispatch, useSelector} from 'react-redux';
-import {makeStyles, Box,Typography, Button }from '@material-ui/core';
-import { removeFromCart} from '../../redux/actions/cartActions.js';
+import { useDispatch, useSelector } from 'react-redux';
+import { makeStyles, Box, Typography, Button, Grid } from '@material-ui/core';
+import { removeFromCart } from '../../redux/actions/cartActions.js';
 import CartItem from './CartItem';
 import EmptyCart from './EmptyCart.jsx';
 import TotalView from './TotalView.jsx';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
     component: {
         padding: '30px 135px',
-        display:'flex',
+        display: 'flex',
+
+        [theme.breakpoints.down('md')]: {
+            padding: '15px 0px',
+        }
 
     },
     left: {
-        width: '67%'
+        // width: '67%'
+        marginLeft: '65px',
+        [theme.breakpoints.down('sm')]:{
+            padding: '10px',
+            marginLeft: '0px'
+        }
     },
     right: {
         
@@ -40,43 +49,45 @@ const useStyles = makeStyles({
         marginLeft: 'auto'
 
     },
-})
+}));
 
 
 const Cart = () => {
 
-    const {cartItems} = useSelector(state => state.cart);
+    const { cartItems } = useSelector(state => state.cart);
     const classes = useStyles();
     const dipatch = useDispatch();
-    
-    const removeItem= (id) => {
+
+    const removeItem = (id) => {
         dipatch(removeFromCart(id));
     }
 
     return (
         <>
             {
-                cartItems.length? 
-                    <Box className ={classes.component}>
-                        <Box className={classes.left}>
-                            <Box className={classes.header}>
-                                <Typography style={{fontWeight: 600, fontSize: 18}}>My Cart ({cartItems.length})</Typography>
-                            </Box>
-                            {
-                                cartItems.map(item => (
-                                    <CartItem item={item} removeItem={removeItem}/>
-                                ))
-                            }
-                            <Box className={classes.bottom}>
-                                <Button variant="contained" className={classes.placeorder}>PLACE ORDER</Button>
-                            </Box>
-                        </Box>
-                        
-                        <TotalView cartItems={cartItems}/>
-                        
-                    </Box>    
+                cartItems.length ?
+                    <Box>
+                        <Grid container className={classes.component}>
+                            <Grid item lg={7} md={7} sm={12} xs={12} className={classes.left}>
+                                <Box className={classes.header}>
+                                    <Typography style={{ fontWeight: 600, fontSize: 18 }}>My Cart ({cartItems.length})</Typography>
+                                </Box>
+                                {
+                                    cartItems.map(item => (
+                                        <CartItem item={item} removeItem={removeItem} />
+                                    ))
+                                }
+                                <Box className={classes.bottom}>
+                                    <Button variant="contained" className={classes.placeorder}>PLACE ORDER</Button>
+                                </Box>
+                            </Grid>
+                            <Grid item lg={3} md={3} sm={12} xs={12} className={classes.right}>
+                                <TotalView cartItems={cartItems} />
+                            </Grid>
 
-                    
+                        </Grid>
+                    </Box>
+
                     : <EmptyCart />
             }
         </>
