@@ -23,11 +23,11 @@ const PORT = process.env.PORT || 8000;
 const username = process.env.DB_USER;
 const password = process.env.DB_PASSWORD
 const URL = `mongodb://${username}:${password}@flipkart-clone-shard-00-00.cfny2.mongodb.net:27017,flipkart-clone-shard-00-01.cfny2.mongodb.net:27017,flipkart-clone-shard-00-02.cfny2.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-atrma7-shard-0&authSource=admin&retryWrites=true&w=majority`;
-Connection(process.env.MONGODB_URI || URL )
+Connection(process.env.MONGODB_URI)
 
 
 
-if (process.env.NODE_ENV=="production"){
+if (process.env.NODE_ENV==="production"){
     app.use(express.static('client_/build'))
 }
 app.listen(PORT, () => console.log(`Server is running on PORT ${PORT}`));
