@@ -17,7 +17,7 @@ export const getProducts =()=> async (dispatch) => {
 
 export const getProductDetails = (id) => async(dispatch) => {
     try {
-        const {data} = await axios.get( `product/${id}`);
+        const {data} = await axios.get( `/product/${id}`);
         console.log(data)
         dispatch({type: action.GET_PRODUCTDETAIL_SUCESS, payload:data});
     }catch(error){

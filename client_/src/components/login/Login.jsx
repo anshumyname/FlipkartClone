@@ -133,7 +133,7 @@ const Login = ({ open, setopen , setAccount}) => {
 
     const loginUser = async () => {
         let response = await authenticateLogin(login);
-        console.log(login);
+        console.log(response);
         if(!response){
             seterror(true);
             return;
