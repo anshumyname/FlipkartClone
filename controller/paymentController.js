@@ -1,4 +1,4 @@
-import { paytmmerchantkey, paytmParams } from '../index.js';
+import { paytmmerchantkey, paytmParams } from '../server.js';
 import paytmchecksum from '../paytm/PaytmChecksum.js';
 import formidable from 'formidable';
 import https from 'https';

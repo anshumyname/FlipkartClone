@@ -21,6 +21,7 @@ const useStyles = makeStyles (theme => ({
  
 const Banner = () => { 
     const classes = useStyles();
+    
     return (
         <Carousel 
             autoPlay={true}
