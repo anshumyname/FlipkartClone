@@ -12,7 +12,7 @@ export const authenticateSignUp = async (user) => {
 
 export const authenticateLogin = async (user) => {
     try {
-        return await axios.post(`${url}/login`,user );
+        return await axios.post(`${url}/login`, user );
     }catch(error){
         console.log("Error while calling login auth api ", error.message);
     }
