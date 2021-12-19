@@ -14,7 +14,6 @@ export const getProductById  = async  (request, response) => {
     try {
         
         const product = await Product.findOne({'id': request.params.id});
-        console.log(product);
         response.json(product);
 
 
