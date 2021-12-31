@@ -13,10 +13,11 @@ Frontend is build on React framework with Expreed & NodeJS server as backend and
 # DEMO
 
 ## HOMEPAGE TOUR
-![](https://github.com/anshumyname/FlipkartClone/tree/main/videos/homepage_tour.gif)
+![](https://github.com/anshumyname/FlipkartClone/blob/main/videos/homepage_tour.gif)
 
 ## CART AND PAYTM DEMO
-![](https://github.com/anshumyname/FlipkartClone/tree/main/videos/addtocart.gif)
+![](https://github.com/anshumyname/FlipkartClone/blob/main/videos/addtocart.gif)
+
 
 # TECHSTACK
 - React V16+ (Frontend)
